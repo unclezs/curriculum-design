@@ -28,5 +28,6 @@
       <Label layoutX="344.0" layoutY="311.0" text="power by" />
       <Label layoutX="398.0" layoutY="287.0" text="\@2019" />
       <Hyperlink fx:id="csdn_blog" layoutX="398.0" layoutY="308.0" text="Unclezs" />
+      <Hyperlink fx:id="github_code" layoutX="14.0" layoutY="308.0" text="Soure Code" />
    </children>
 </Pane>

@@ -23,6 +23,7 @@ public class MainController implements Initializable {
     @FXML Button tel;
     @FXML Button park;
     @FXML Hyperlink csdn_blog;
+    @FXML Hyperlink github_code;
     private final static Stage flightStage=new Stage();
     private final static Stage telStage=new Stage();
     private final static Stage parkStage=new Stage();
@@ -67,6 +68,13 @@ public class MainController implements Initializable {
         csdn_blog.setOnMouseClicked(e->{
             try {
                 Desktop.getDesktop().browse(new URI("https://blog.csdn.net/qq_42006120"));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        github_code.setOnMouseClicked(e->{
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/unclezs/CurriculumDesign/tree/master/DataStruct"));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
