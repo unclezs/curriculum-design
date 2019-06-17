@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unclezs.tree.ui.TreeController">
+   <children>
+      <Canvas fx:id="canvas" height="935.0" layoutX="159.0" width="1444.0" />
+      <Button fx:id="add" layoutX="18.0" layoutY="130.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #1E9FFF; -fx-background-radius: 30px;" text="添加节点" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField fx:id="input" alignment="CENTER" layoutX="18.0" layoutY="73.0" prefHeight="33.0" prefWidth="121.0" promptText="输入节点值" style="-fx-border-radius: 30px; -fx-background-radius: 30px;">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <Pane layoutX="156.0" layoutY="-2.0" prefHeight="908.0" prefWidth="3.0" style="-fx-background-color: #009688;" />
+      <Button fx:id="query" layoutX="18.0" layoutY="189.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #009688; -fx-background-radius: 30px;" text="查找节点" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="remove" layoutX="18.0" layoutY="243.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #FF5722; -fx-background-radius: 30px;" text="删除节点" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="resetTree" layoutX="18.0" layoutY="299.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #FFB800; -fx-background-radius: 30px;" text="重置树" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="randTree" layoutX="18.0" layoutY="357.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #1E9FFF; -fx-background-radius: 30px;" text="随机树" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="inorder" layoutX="18.0" layoutY="416.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #1E9FFF; -fx-background-radius: 30px;" text="中序遍历" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <JFXRadioButton fx:id="bs" layoutX="87.0" layoutY="14.0" text="排序树" />
+      <JFXRadioButton fx:id="rb" layoutX="18.0" layoutY="14.0" text="红黑树" />
+      <HBox fx:id="box" layoutX="176.0" layoutY="820.0" prefHeight="43.0" prefWidth="1107.0" />
+      <Label alignment="CENTER" layoutX="-1.0" layoutY="530.0" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #009688;" text="信息" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="asl" layoutX="18.0" layoutY="468.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #1E9FFF; -fx-background-radius: 30px;" text="计算ASL" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="msg" alignment="CENTER" layoutX="-3.0" layoutY="557.0" prefHeight="34.0" prefWidth="159.0" text="平均查找长度:0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

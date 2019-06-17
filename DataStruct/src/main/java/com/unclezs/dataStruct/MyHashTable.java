@@ -16,6 +16,7 @@ public class MyHashTable<K,V> {
     private int hashMode;//哈希值生成函数选择
     private int conflictsNum;//冲突次数
     private int linkNodeNum;//链式储存时当前节点个数
+    private int queryNum;//查询一次比较次数
     //默认容量16
     public MyHashTable(){
         this(16);
@@ -55,7 +56,7 @@ public class MyHashTable<K,V> {
     //添加数据（三种情况，还没有初始化hash表，初始化了但是hash值冲突，key相同）
     public void put(K k,V v){
         //自动扩容，2倍扩容
-        if(num>eRate*capacity){
+        if(num>eRate*capacity&&mode==1){
             resize(capacity*2);
         }
         int hash=hash(k);//计算哈希值
@@ -107,6 +108,7 @@ public class MyHashTable<K,V> {
      * @return 没找到返回null
      */
     public V get(K k){
+        queryNum=1;
         int hash=hash(k);
         int index=indexFor(hash);
         Node<K,V> node=table[index];
@@ -116,11 +118,13 @@ public class MyHashTable<K,V> {
         if(mode==1){//开放地址法
             while (table[index]!=null&&!k.equals(table[index].getKey())){//如果当前索引处node为空了并且还没有找到与键值匹配的关键字则跳出循环
                 index=(index+1)%capacity;
+                queryNum++;
             }
             return table[index]==null?null:table[index].getValue();
         }else {//链式储存法
             while (node.next!=null&&!k.equals(node.getKey())){
                 node=node.next;
+                queryNum++;
             }
            if(k.equals(node.getKey())){
                return node.getValue();
@@ -152,20 +156,28 @@ public class MyHashTable<K,V> {
     public void setMode(int mode){
         this.mode=mode;
     }
+    //获取本次查询比较次数
+    public int getQueryNum(){
+        return queryNum;
+    }
     //重新设置大小
     public void resize(int capacity){
-        //如果传入容量小于当前容量则缩小容量
+        //如果传入容量小于当前容量则不处理
         int size=this.capacity;
         if(capacity<this.capacity){
-            size=capacity;
+            return;
         }
-        //数据迁移
-        Node<K,V>[] tab=new Node[capacity];
-        for(int i=0;i<size;i++){
-            tab[i]=table[i];
-        }
-        table=tab;
+        conflictsNum=0;
+        num=0;
         this.capacity=capacity;
+        //数据迁移
+        Node<K,V>[] oldTab=table;
+        table=new Node[capacity];
+        for(int i=0;i<size;i++){
+            if(oldTab[i]!=null){
+                put(oldTab[i].getKey(),oldTab[i].getValue());
+            }
+        }
     }
     //自定义节点类
     static class Node<K,V>{

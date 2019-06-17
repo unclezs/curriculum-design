@@ -12,6 +12,10 @@ public class MyQueue<E> {
    public void add(E e){
        queueData.add(e);
    }
+   //获取当前队列长度
+    public int size(){
+       return queueData.size();
+    }
    //头部出队列，并且删除
    public synchronized E poll(){
        if(queueData.size()==0)

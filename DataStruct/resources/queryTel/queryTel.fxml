@@ -113,9 +113,11 @@
                         <JFXComboBox fx:id="searchType" layoutX="201.0" layoutY="167.0" prefHeight="31.0" prefWidth="97.0" promptText="电话号码" />
                         <TableView fx:id="table" layoutX="144.0" layoutY="241.0" prefHeight="121.0" prefWidth="619.0">
                           <columns>
-                            <TableColumn fx:id="tname" prefWidth="150.0" text="姓名" />
-                            <TableColumn fx:id="ttel" minWidth="0.0" prefWidth="216.0" text="电话号码" />
-                              <TableColumn fx:id="taddress" prefWidth="250.0" text="住址" />
+                            <TableColumn fx:id="tname" prefWidth="111.0" text="姓名" />
+                            <TableColumn fx:id="ttel" minWidth="0.0" prefWidth="155.0" text="电话号码" />
+                              <TableColumn fx:id="taddress" prefWidth="181.0" text="住址" />
+                              <TableColumn fx:id="ttime" prefWidth="93.0" text="耗时" />
+                              <TableColumn fx:id="tnum" prefWidth="78.0" text="比较次数" />
                           </columns>
                         </TableView>
                      </children>

@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.unclezs.dataStruct.MyHashTable;
 import com.unclezs.queryTel.User;
+import com.unclezs.utils.DateUtil;
 import com.unclezs.utils.GlobalValue;
 import com.unclezs.utils.RandomUtils;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.text.Text;
 
 import javax.print.attribute.standard.NumberUp;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /*
@@ -35,11 +37,13 @@ public class TelController implements Initializable {
     @FXML JFXButton save;//确认录入
     @FXML JFXButton create;//随机生成
 
-    //查询系统
+    //查询系统set
     @FXML TableView table;//查询结果表格
     @FXML TableColumn tname;//姓名
     @FXML TableColumn ttel;//电话
     @FXML TableColumn taddress;//地址
+    @FXML TableColumn ttime;//查找时间
+    @FXML TableColumn tnum;//比较次数
     @FXML JFXButton query;//查询按钮
     @FXML TextField searchText;//搜索内容
     @FXML JFXComboBox searchType;//搜索类型
@@ -61,7 +65,6 @@ public class TelController implements Initializable {
     //成员数据
     private MyHashTable<String,User> nameTable=new MyHashTable<>();//名字为关键字建立散列表
     private MyHashTable<String,User> telTable=new MyHashTable<>();//电话号码为关键字建立散列表
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initQueryAndIndex();//初始化首页和查询
@@ -80,6 +83,7 @@ public class TelController implements Initializable {
         user.setTel(tel.getText());
         nameTable.put(user.getName(),user);
         telTable.put(user.getTel(),user);
+        addDataToLineMap();
         alertBox(null,"录入信息成功");
     }
     //随机生成
@@ -93,6 +97,7 @@ public class TelController implements Initializable {
             user.setName(RandomUtils.getRandomString(5,""));
             user.setAddress(RandomUtils.getRandomString(20,""));
             user.setTel(RandomUtils.getRandom(11));
+            System.out.println(user);
             nameTable.put(user.getName(),user);
             telTable.put(user.getTel(),user);
             //计算平均查找长度生成表格
@@ -109,6 +114,8 @@ public class TelController implements Initializable {
         tname.setCellValueFactory(new PropertyValueFactory<>("name"));
         ttel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         taddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        ttime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        tnum.setCellValueFactory(new PropertyValueFactory<>("num"));
         table.setItems(FXCollections.observableArrayList());
         //主页
         fmode.getItems().addAll("开放地址法","链式法");
@@ -116,17 +123,30 @@ public class TelController implements Initializable {
         fhash.getItems().addAll("1","2");
         fhash.setValue("1");
     }
+    //查询用户
     void queryUser(){
         table.getItems().clear();
         String text = searchText.getText();
         String condition=searchType.getValue().toString();
+        long st = System.currentTimeMillis();
+        User user;
         if(condition.equals("姓名")){
-            User user = nameTable.get(text);
-            table.getItems().add(user);
+            user = nameTable.get(text);
+            if(user==null){
+                alertBox("未找到","比较次数："+telTable.getQueryNum());
+                return;
+            }
+            user.setNum(nameTable.getQueryNum()+"");
         }else {
-            User user = telTable.get(text);
-            table.getItems().add(user);
+            user = telTable.get(text);
+            if(user==null){
+                alertBox("未找到","比较次数："+telTable.getQueryNum());
+                return;
+            }
+            user.setNum(telTable.getQueryNum()+"");
         }
+        user.setTime((System.currentTimeMillis()-st)+"ms");
+        table.getItems().add(user);
     }
     //计算平均查找长度生成表格
     void addDataToLineMap(){
@@ -143,6 +163,7 @@ public class TelController implements Initializable {
         float ASL_tel=(conflictsNum_tel+0.0f)/tableNum;
         ((XYChart.Series)(lineMap.getData().get(1))).getData().add(new XYChart.Data(tableNum_tel,ASL_tel));
     }
+    //初始化折线图
     void initLineMap(){
         lineMap.setData(null);
         ObservableList<XYChart.Series<Integer, Float>> series = FXCollections.observableArrayList();
@@ -155,7 +176,7 @@ public class TelController implements Initializable {
         //更新散列表生成信息
         cmode.setText(fmode.getValue().toString());
         chash.setText("散列函数："+fhash.getValue().toString());
-        ccapactiy.setText("容量："+(capacity.getText().equals("")? "16" : capacity.getText()));
+        ccapactiy.setText("初始容量："+(capacity.getText().equals("")? "16" : capacity.getText()));
         cerate.setText("扩容因子："+(erate.getText().equals("") ? "0.8" : erate.getText()));
     }
     void rebuildHashTable(){

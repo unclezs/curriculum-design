@@ -85,12 +85,15 @@ public class ParkingController implements Initializable {
         if(hbox.getChildren().size()<6&&vbox.getChildren().size()==7){
             CarPane car =new CarPane(new Car(RandomUtils.getRandom(5), 0, new Date())) ;
             waitQueue.add(car);
+            car.setOnMouseClicked(e->{cph.setText(car.getCar().getNumber());});
             hbox.getChildren().add(car);
             log.appendText(car.getCar().getNumber()+"进入了便利栈等待\r\n");
         }
         //停车场没有满，直接进停车场
         if(vbox.getChildren().size()<7){
-            stopStack.push(new CarPane(new Car(RandomUtils.getRandom(5),1,new Date())));
+            CarPane car=new CarPane(new Car(RandomUtils.getRandom(5),1,new Date()));
+            car.setOnMouseClicked(e->{cph.setText(car.getCar().getNumber());});
+            stopStack.push(car);
             vbox.getChildren().add(stopStack.peek());
             log.appendText(stopStack.peek().getCar().getNumber()+"进入了停车场栈\r\n");
         }

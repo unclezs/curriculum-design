@@ -54,7 +54,7 @@ public class DateUtil {
         return hour + "时" + min + "分"+sec+"秒";
     }
     /**
-     * 计算两个时间相差多久天
+     * 计算两个时间相差多少小时
      * @param endDate
      * @param nowDate
      * @return
