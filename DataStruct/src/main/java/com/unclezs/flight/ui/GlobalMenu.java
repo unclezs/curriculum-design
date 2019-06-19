@@ -30,9 +30,6 @@ class GlobalMenu extends ContextMenu
         getItems().add(buy);
         getItems().add(delete);
         getItems().add(cancel);
-        buy.setOnAction(e->{
-
-        });
     }
 
     /**

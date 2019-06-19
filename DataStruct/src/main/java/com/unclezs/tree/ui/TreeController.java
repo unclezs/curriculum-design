@@ -180,12 +180,13 @@ public class TreeController implements Initializable {
         double xpreOff = canvas.getLayoutX() + 20;//横坐标偏移
         double ypreOff = canvas.getLayoutY() + 20;//纵坐标偏移
         path.getElements().add(new MoveTo(node.x + xpreOff, node.y + ypreOff));
+        //显示下面得排序球
         while (queue.size() != 0) {
-
             box.getChildren().add(getLabel(node.getElement()));
             node = queue.poll();
             path.getElements().add(new LineTo(node.x + xpreOff, node.y + ypreOff));
         }
+        box.getChildren().add(getLabel(node.getElement()));
         pt.setDuration(Duration.millis(size * 1500));//设置持续时间
         pt.setPath(path);//设置路径
         pt.setNode(circle);//设置物体

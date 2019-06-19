@@ -1,10 +1,7 @@
 package com.unclezs.test;
 
 
-import com.unclezs.dataStruct.MyHashTable;
-import com.unclezs.dataStruct.MyList;
-import com.unclezs.dataStruct.MyQueue;
-import com.unclezs.dataStruct.SortTree;
+import com.unclezs.dataStruct.*;
 import com.unclezs.queryTel.User;
 import com.unclezs.utils.RandomUtils;
 import org.junit.jupiter.api.Test;
@@ -85,5 +82,22 @@ public class AppTest {
 //            System.out.println(user);
         }
         r.close();
+    }
+
+    //图测试
+    @Test
+    void testGraph(){
+        Graph<Integer> graph=new Graph<>(5);
+        graph.insertVertex("A");
+        graph.insertVertex("B");
+        graph.insertVertex("C");
+        graph.insertVertex("D");
+        graph.insertVertex("E");
+        graph.insertEdge(0,2,1);
+        graph.insertEdge(0,1,1);
+        graph.insertEdge(1,2,1);
+        graph.insertEdge(1,3,1);
+        graph.insertEdge(1,4,1);
+        graph.showGraph();
     }
 }

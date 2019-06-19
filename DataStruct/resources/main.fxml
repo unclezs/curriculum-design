@@ -10,17 +10,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unclezs.MainController">
    <children>
-      <Button fx:id="flight" layoutX="170.0" layoutY="88.0" style="-fx-background-color: #009688;" text="航班查询系统" textFill="WHITE">
+      <Button fx:id="flight" layoutX="62.0" layoutY="63.0" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #009688;" text="航班查询系统" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="tel" layoutX="154.0" layoutY="158.0" style="-fx-background-color: #009688;" text="电话号码查询系统" textFill="WHITE">
+      <Button fx:id="tel" layoutX="229.0" layoutY="63.0" style="-fx-background-color: #009688;" text="电话号码查询系统" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="park" layoutX="170.0" layoutY="229.0" style="-fx-background-color: #009688;" text="停车模拟系统" textFill="WHITE">
+      <Button fx:id="park" layoutX="62.0" layoutY="127.0" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #009688;" text="停车模拟系统" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
@@ -29,5 +29,15 @@
       <Label layoutX="398.0" layoutY="287.0" text="\@2019" />
       <Hyperlink fx:id="csdn_blog" layoutX="398.0" layoutY="308.0" text="Unclezs" />
       <Hyperlink fx:id="github_code" layoutX="14.0" layoutY="308.0" text="Soure Code" />
+      <Button fx:id="traffic" layoutX="229.0" layoutY="127.0" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #009688;" text="全国交通模拟咨询" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="tree" layoutX="154.0" layoutY="187.0" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #009688;" text="排序树与红黑树" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unclezs.traffic.ui.CityController">
+   <children>
+      <TextField fx:id="input" layoutX="14.0" layoutY="14.0" />
+      <Button fx:id="add" layoutX="189.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #1E9fff;" text="添加城市" textFill="WHITE" />
+      <JFXListView fx:id="cityList" layoutX="12.0" layoutY="43.0" prefHeight="353.0" prefWidth="243.0" />
+   </children>
+</Pane>

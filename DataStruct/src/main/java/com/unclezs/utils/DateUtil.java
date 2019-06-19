@@ -70,6 +70,7 @@ public class DateUtil {
         return hour+"";
     }
 
+
     /**
      * 字符串转时间
      * @param date 时间

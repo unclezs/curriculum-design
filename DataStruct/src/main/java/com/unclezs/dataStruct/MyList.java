@@ -62,10 +62,12 @@ public class MyList<T> implements Serializable {
         checkAndExpansion();
         return elementData(index);
     }
+    //清空集合
     public void clear(){
         this.size=0;
         elementData=new Object[capaCity];
     }
+    //添加一个集合
     public void addAll(MyList<T> myList){
         if(myList==null||myList.size()==0)
             return;
@@ -73,5 +75,31 @@ public class MyList<T> implements Serializable {
             this.add(myList.get(i));
         }
     }
+    //查看是否有这个元素元素
+    public boolean isExist(T e){
+        for (int i = 0; i < elementData.length; i++) {
+            if(e.equals(elementData[i])){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    //查找元素下标
+    public int indexOf(T t){
+        if(t==null){
+            return -1;
+        }
+        for (int i = 0; i <elementData.length ; i++) {
+            if(elementData[i]!=null&&t.equals(elementData[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(elementData);
+    }
 }

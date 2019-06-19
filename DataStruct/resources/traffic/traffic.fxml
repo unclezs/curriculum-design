@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.validation.*?>
+<?import com.browniebytes.javafx.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.browniebytes.javafx.control.DateTimePicker?>
+
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.unclezs.traffic.ui.TrafficController">
+   <tabs>
+      <Tab text="信息大厅">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="infoTable" editable="true" layoutY="51.0" prefHeight="425.0" prefWidth="858.0">
+                    <columns>
+                      <TableColumn fx:id="tcfd" prefWidth="173.0" text="出发地" />
+                      <TableColumn fx:id="tddd" prefWidth="161.0" text="到达地" />
+                        <TableColumn fx:id="tcfsj" prefWidth="185.0" text="出发时间" />
+                        <TableColumn fx:id="tddsj" prefWidth="197.0" text="到达时间" />
+                        <TableColumn fx:id="tpj" prefWidth="132.0" text="票价" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="iadd" layoutX="751.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: #009688;" text="添加班次" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="city" layoutX="751.0" layoutY="486.0" mnemonicParsing="false" style="-fx-background-color: #009688;" text="城市管理" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="icfd" layoutX="14.0" layoutY="12.0" prefHeight="23.0" prefWidth="104.0" promptText="出发地点" text="重庆" />
+                  <TextField fx:id="iddd" layoutX="133.0" layoutY="12.0" prefHeight="23.0" prefWidth="100.0" promptText="到达地点" text="上海" />
+                  <TextField fx:id="ipj" layoutX="604.0" layoutY="12.0" prefHeight="23.0" prefWidth="115.0" promptText="票价" text="1200" />
+                  <DateTimePicker fx:id="icfsj" layoutX="254.0" layoutY="12.0" prefHeight="24.0" prefWidth="151.0" />
+                  <DateTimePicker fx:id="iddsj" layoutX="423.0" layoutY="12.0" prefHeight="24.0" prefWidth="157.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="查询服务">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="query" layoutX="693.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-color: #1E9FFF;" text="查询最优" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <JFXComboBox fx:id="ctaddr" layoutX="325.0" layoutY="54.0" prefHeight="29.0" prefWidth="134.0" promptText="到达城市" />
+                  <JFXComboBox fx:id="condition" layoutX="521.0" layoutY="50.0" prefHeight="33.0" prefWidth="118.0" promptText="最低票价" />
+                  <JFXComboBox fx:id="cfaddr" layoutX="127.0" layoutY="50.0" prefHeight="33.0" prefWidth="128.0" promptText="出发城市" />
+                  <Label layoutX="274.0" layoutY="69.0" text="---&gt;" />
+                  <TableView fx:id="queryTable" layoutX="-4.0" layoutY="99.0" prefHeight="373.0" prefWidth="864.0">
+                    <columns>
+                      <TableColumn fx:id="tlxbh" prefWidth="82.0" text="路线序号" />
+                      <TableColumn fx:id="tcfcs" minWidth="8.0" prefWidth="137.0" text="出发城市" />
+                        <TableColumn fx:id="tddcs" prefWidth="103.0" text="到达城市" />
+                        <TableColumn fx:id="tqcfsj" prefWidth="186.0" text="出发时间" />
+                        <TableColumn fx:id="tqddsj" prefWidth="127.0" text="到达时间" />
+                        <TableColumn fx:id="tqpj" prefWidth="116.0" text="票价" />
+                        <TableColumn fx:id="ths" prefWidth="112.0" text="等待时间" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="693.0" layoutY="481.0" text="花费时间：" textFill="#2b00ff">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="useTime" layoutX="763.0" layoutY="481.0" text="1小时50分钟">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="528.0" layoutY="481.0" text="中转次数：" textFill="#4200f8">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pastCity" layoutX="602.0" layoutY="481.0" text="13次">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="345.0" layoutY="481.0" text="总花费：" textFill="#1100ff">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cost" layoutX="405.0" layoutY="481.0" text="2000元">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </content>
+      </Tab>
+   </tabs>
+</JFXTabPane>
