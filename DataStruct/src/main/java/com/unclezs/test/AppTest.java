@@ -4,6 +4,7 @@ package com.unclezs.test;
 import com.unclezs.dataStruct.*;
 import com.unclezs.queryTel.User;
 import com.unclezs.utils.RandomUtils;
+import com.unclezs.utils.ResourceLoader;
 import org.junit.jupiter.api.Test;
 import sun.reflect.generics.tree.Tree;
 
@@ -99,5 +100,12 @@ public class AppTest {
         graph.insertEdge(1,3,1);
         graph.insertEdge(1,4,1);
         graph.showGraph();
+    }
+    @Test
+    void testFile(){
+        String path = ResourceLoader.class.getResource("/trainInfo").getPath();
+        File file = new File(path.substring(1));
+        System.out.println(path.substring(1));
+        System.out.println(file.exists()+"-------");
     }
 }
